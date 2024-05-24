@@ -10,6 +10,7 @@ function CodeEditorComponent() {
   const [convertLoading, setConvertLoading] = useState(false);
   const [debugLoading, setDebugLoading] = useState(false);
   const [reviewLoading, setReviewLoading] = useState(false);
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
 
   useEffect(() => {
     if (textRef.current) {
@@ -72,12 +73,18 @@ function CodeEditorComponent() {
       });
   };
 
+  const toggleTheme = () => {
+    setIsDarkTheme(!isDarkTheme);
+  };
+
   return (
-    <div className="container">
+    <div className={`container ${isDarkTheme ? "dark-theme" : ""}`}>
       <header>
         <h1>Code Converter</h1>
-
         <div className="buttons-container">
+          <button onClick={toggleTheme}>
+            {isDarkTheme ? "Light Theme" : "Dark Theme"}
+          </button>
           <div className="buttons">
             <button onClick={handleConvert} disabled={convertLoading}>
               {convertLoading ? (
@@ -111,10 +118,9 @@ function CodeEditorComponent() {
             <option value="cpp">C++</option>
           </select>
         </div>
-
       </header>
       <div className="content">
-        <div className="code-editor-container">
+        <div className={`code-editor-container ${isDarkTheme ? "dark-theme" : ""}`}>
           <h3>Editor</h3>
           <CodeEditor
             value={code}
@@ -129,12 +135,13 @@ function CodeEditorComponent() {
               fontSize: 12,
               height: "500px",
             }}
+            className={isDarkTheme ? "dark-theme" : ""}
           />
         </div>
 
-        <div className="display-container">
+        <div className={`display-container ${isDarkTheme ? "dark-theme" : ""}`}>
           <h3>Display</h3>
-          <pre className="display-area">{output}</pre>
+          <pre className={`display-area ${isDarkTheme ? "dark-theme" : ""}`}>{output}</pre>
         </div>
       </div>
 
