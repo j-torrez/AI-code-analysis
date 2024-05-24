@@ -14,48 +14,59 @@ import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
-@RestController
-@RequestMapping("/api")
+@RestController  // Marks this class as a RESTful web service controller
+@RequestMapping("/api")  // Base URL for all API endpoints in this controller
 public class CustomBotController {
 
-    @Value("${openai.model}")
+    @Value("${openai.model}")  // Injects the OpenAI model from application properties
     private String model;
 
-    @Value(("${openai.api.url}"))
+    @Value(("${openai.api.url}"))  // Injects the OpenAI API URL from application properties
     private String apiURL;
 
-    @Autowired
+    @Autowired  // Injects an instance of RestTemplate
     private RestTemplate template;
 
-    @GetMapping("/generate-response")
+    @GetMapping("/generate-response")  // Maps GET requests to /api/generate-response
     public Message chat(@RequestParam("codeSnippet") String codeSnippet, @RequestParam("language") String language) {
-        String prompt = generatePromptFromCodeSnippet(codeSnippet,language);
+        // Generates a prompt from the code snippet and language
+        String prompt = generatePromptFromCodeSnippet(codeSnippet, language);
+        // Creates a request object for ChatGPT
         ChatGPTRequest request = new ChatGPTRequest(model, prompt);
+        // Sends the request to the OpenAI API and receives a response
         ChatGptResponse chatGptResponse = template.postForObject(apiURL, request, ChatGptResponse.class);
+        // Returns the first message from the response
         return chatGptResponse.getChoices().get(0).getMessage();
     }
 
+    // Generates a prompt from the code snippet and specified language
     private String generatePromptFromCodeSnippet(String codeSnippet, String language) {
-        // Customize this method to create a prompt from the code snippet and language.
         return "Convert the given code snippet to " + language + ":\n\n" + codeSnippet;
     }
 
-    @GetMapping("/debug-code")
+    @GetMapping("/debug-code")  // Maps GET requests to /api/debug-code
     public Message debugCode(@RequestParam("codeSnippet") String codeSnippet) throws UnsupportedEncodingException {
+        // Encodes the code snippet for safe transmission
         String encodedCodeSnippet;
         encodedCodeSnippet = URLEncoder.encode(codeSnippet, StandardCharsets.UTF_8.toString());
 
-
+        // Generates a prompt for debugging the code
         String prompt = generatePromptForCodeDebugging(codeSnippet);
+        // Creates a request object for ChatGPT
         ChatGPTRequest request = new ChatGPTRequest(model, prompt);
+        // Sends the request to the OpenAI API and receives a response
         ChatGptResponse chatGptResponse = template.postForObject(apiURL, request, ChatGptResponse.class);
+        // Returns the first message from the response
         return chatGptResponse.getChoices().get(0).getMessage();
     }
 
+    // Generates a prompt for debugging the given code snippet
     private String generatePromptForCodeDebugging(String encodedCodeSnippet) throws UnsupportedEncodingException {
+        // Decodes the encoded code snippet
         String decodedCodeSnippet;
         decodedCodeSnippet = URLDecoder.decode(encodedCodeSnippet, StandardCharsets.UTF_8.toString());
 
+        // Builds a detailed prompt for code debugging
         StringBuilder promptBuilder = new StringBuilder();
         promptBuilder.append("Code debugging prompt:\n\n");
         promptBuilder.append("Please review the following code snippet for debugging:\n\n");
@@ -76,16 +87,21 @@ public class CustomBotController {
         return promptBuilder.toString();
     }
 
-
-    @GetMapping("/code-quality-check")
+    @GetMapping("/code-quality-check")  // Maps GET requests to /api/code-quality-check
     public Message codeQualityCheck(@RequestParam("codeSnippet") String codeSnippet) {
+        // Generates a prompt for code quality checking
         String prompt = generatePromptForCodeQualityChecking(codeSnippet);
+        // Creates a request object for ChatGPT
         ChatGPTRequest request = new ChatGPTRequest(model, prompt);
+        // Sends the request to the OpenAI API and receives a response
         ChatGptResponse chatGptResponse = template.postForObject(apiURL, request, ChatGptResponse.class);
+        // Returns the first message from the response
         return chatGptResponse.getChoices().get(0).getMessage();
     }
 
+    // Generates a prompt for checking the quality of the given code snippet
     private String generatePromptForCodeQualityChecking(String codeSnippet) {
+        // Builds a detailed prompt for code quality assessment
         StringBuilder promptBuilder = new StringBuilder();
         promptBuilder.append("Code quality check prompt:\n\n");
         promptBuilder.append("Please review the following code snippet for quality assessment:\n\n");
@@ -106,5 +122,4 @@ public class CustomBotController {
 
         return promptBuilder.toString();
     }
-
 }
