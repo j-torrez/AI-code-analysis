@@ -8,7 +8,9 @@ will assist developers in seamlessly transitioning code across different languag
 quality, and identifying potential bugs early in the development process.
 
 
+## Screenshots
 
+![Application Screenshot](screenshots/example.png)
 
 ## Project Structure
 
@@ -95,10 +97,4 @@ in the official site of OpenAi`
 
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
-
-
-
-## Screenshots
-
-!![Application Screenshot](screenshots/example.png)
 
