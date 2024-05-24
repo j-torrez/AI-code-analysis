@@ -100,5 +100,5 @@ in the official site of OpenAi`
 
 ## Screenshots
 
-![App Screenshot](https://www.rawpixel.com/image/12501935/png-background-face)
+!![Application Screenshot](screenshots/example.png)
 
