@@ -11,6 +11,8 @@ quality, and identifying potential bugs early in the development process.
 ## Screenshots
 
 ![Application Screenshot](screenshots/example.png)
+![Application Screenshot](screenshots/example1.png)
+![Application Screenshot](screenshots/example2.png)
 
 ## Project Structure
 
