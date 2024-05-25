@@ -78,6 +78,20 @@ npm start
 
 
 ```
+
+##Alternative Installation using Docker
+
+1. Open the docker-compose.yml file found in the root directory and add your own OpenAi API key
+```bash
+OPENAI_API_KEY=your_openai_api_key_here
+
+```
+2. Open a new terminal, in your root directory and run the following command
+```bash
+docker-compose up
+
+```
+
 ## OpenAI API Key
 
 To run this project, you will need to add your own Openai KEY 
