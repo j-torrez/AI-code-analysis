@@ -35,7 +35,8 @@ quality, and identifying potential bugs early in the development process.
 └── README.md
 
 ```
-
+## Want To check the site? 👀
+[Just click here ]((https://softwareenginneringprojectclass.netlify.app/)) 
 
 ## Prerequisite 💡
 [Java Development Kit (JDK) 17 ](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html) 
@@ -79,7 +80,7 @@ npm start
 
 ```
 
-#### Run Project using docker 🐳
+### (Alternative) Run Project using docker 🐳
 
 1. Open the docker-compose.yml file found in the root directory and add your own OpenAi API key
 ```bash
