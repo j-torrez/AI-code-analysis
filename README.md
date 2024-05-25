@@ -36,7 +36,7 @@ quality, and identifying potential bugs early in the development process.
 
 ```
 ## Want To check the site? 👀
-[Just click here ]((https://softwareenginneringprojectclass.netlify.app/)) 
+[Click Here ](https://softwareenginneringprojectclass.netlify.app/) 
 
 ## Prerequisite 💡
 [Java Development Kit (JDK) 17 ](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html) 
