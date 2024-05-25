@@ -1,5 +1,5 @@
 
-# Software Engineer Project - Web Application Code Quality and  Converter
+# Software Engineer Project - Web Application Code Quality and  Converter 💻
 
 The primary objective of this project is to develop a web application that facilitates code
 conversion between programming languages, leveraging the ChatGPT API. In addition, the
@@ -8,13 +8,13 @@ will assist developers in seamlessly transitioning code across different languag
 quality, and identifying potential bugs early in the development process.
 
 
-## Screenshots
+## Screenshots 📸
 
 ![Application Screenshot](screenshots/example.png)
 ![Application Screenshot](screenshots/example1.png)
 ![Application Screenshot](screenshots/example2.png)
 
-## Project Structure
+## Project Structure 🧩
 
 
 
@@ -37,7 +37,7 @@ quality, and identifying potential bugs early in the development process.
 ```
 
 
-## Prerequisite
+## Prerequisite 💡
 [Java Development Kit (JDK) 17 ](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html) 
 
 [Apache Maven ](https://maven.apache.org/install.html)
@@ -45,7 +45,7 @@ quality, and identifying potential bugs early in the development process.
 [NodeJS ](https://nodejs.org/en)
 
 
-## Installation
+## Installation 🛠️
 
 1. Clone Repository
 
@@ -79,7 +79,7 @@ npm start
 
 ```
 
-##Alternative Installation using Docker
+#### Run Project using docker 🐳
 
 1. Open the docker-compose.yml file found in the root directory and add your own OpenAi API key
 ```bash
@@ -91,10 +91,15 @@ OPENAI_API_KEY=your_openai_api_key_here
 docker-compose up
 
 ```
+2. Open your web browser
+```bash
+http://localhost:3000/
 
-## OpenAI API Key
+```
 
-To run this project, you will need to add your own Openai KEY 
+## OpenAI API Key 🤖
+
+Alternatively, to run this project, you can manually add your own Openai KEY following this path:
 
 `Backend -> src -> main -> java -> resources -> aplication.properties`
 
@@ -102,7 +107,7 @@ To run this project, you will need to add your own Openai KEY
 in the official site of OpenAi`
 
 
-## Acknowledgements
+## Acknowledgements 📚
 
  - [React Documentation](https://react.dev/reference/react)
  - [Monaco editor wintegration with any React application ](https://github.com/suren-atoyan/monaco-react)
